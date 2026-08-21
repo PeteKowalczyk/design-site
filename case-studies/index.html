@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Conversation Design case studies — Pete Kowalczyk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="blush" aria-hidden="true"></div>
+  <nav class="sticky-nav" aria-label="Case studies (sticky)">
+    <div class="sticky-nav__inner">
+      <a href="#ovo">OVO</a>
+      <a href="#bbc">BBC</a>
+      <a href="#vanguard">Vanguard</a>
+    </div>
+  </nav>
+  <main class="page">
+    <a class="back-link" href="../index.html">&larr; Pete Kowalczyk</a>
+
+    <header class="hero">
+      <p class="hero__kicker">AI Conversation Design</p>
+      <h1>Case studies</h1>
+      <p class="hero__lead">
+        Conversation design lets you define what good looks like, based on real user needs, and what should happen
+        when things go wrong. It gives you a meaningful semantic structure to test against, both automatically and
+        manually &mdash; and the traceability of actions you need to be accountable for what the system is doing.
+      </p>
+    </header>
+
+    <nav class="jumpnav" aria-label="Case studies">
+      <div class="jumpnav__groups">
+        <div class="jumpnav__group">
+          <p class="jumpnav__company"><a href="#ovo">OVO</a></p>
+          <ol>
+            <li><a href="#ovo-1">Translating business processes into UX flows</a></li>
+            <li><a href="#ovo-2">Creating useful and fully traceable experiences</a></li>
+            <li><a href="#ovo-3">Voice design for accessibility and brand</a></li>
+          </ol>
+        </div>
+        <div class="jumpnav__group">
+          <p class="jumpnav__company"><a href="#bbc">BBC</a></p>
+          <ol>
+            <li><a href="#bbc-1">Defining behaviours using an interaction model</a></li>
+            <li><a href="#bbc-2">Designing and testing a voice</a></li>
+          </ol>
+        </div>
+        <div class="jumpnav__group">
+          <p class="jumpnav__company"><a href="#vanguard">Vanguard</a></p>
+          <ol>
+            <li><a href="#vanguard-1">Creating a proof of concept</a></li>
+            <li><a href="#vanguard-2">Observability and evaluation</a></li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <section class="company" id="ovo">
+      <h2 class="company__name">OVO</h2>
+      <article class="project" id="ovo-1">
+        <p class="project__eyebrow">OVO</p>
+        <h3 class="project__title">Translating business processes into UX flows</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Define what good behaviour looks like for a range of scenarios, happy and unhappy paths. Specify what we do and don’t want to happen.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Ran a workshop to define behaviours and create interaction policies</li>
+              <li>Mined conversation logs and training materials</li>
+              <li>Created an intent matrix mapped to correct process flow. Prioritised top contact topics</li>
+              <li>Created retrievable flows.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>A conversational architecture based on real needs and compliant business processes.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I ran a workshop to define behaviours and create our ‘interaction policies’, what we do and don’t want to happen.</p>
+          <p>I mined conversation logs, training materials and regulatory documents to find exemplary patterns.</p>
+          <div class="shots shots--2">
+            <img src="images/p05_c1.jpg" alt="" loading="lazy">
+            <img src="images/p05_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>Together with Ops, I created an intent matrix, mapping user needs to the correct process flows. We then prioritised top contact topics.</p>
+          <p>I created retrievable UX flows for our model to use when it detected any given intent. Flows include intents, example utterances, the required slots, escalation logic, tone markers, repair paths, and example dialogue.</p>
+          <div class="shots shots--2">
+            <img src="images/p06_c1.jpg" alt="" loading="lazy">
+            <img src="images/p06_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="project" id="ovo-2">
+        <p class="project__eyebrow">OVO</p>
+        <h3 class="project__title">Creating useful and fully traceable experiences</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Create truly conversational experiences that support user needs. Working with, rather than against, the capabilities of LLMs.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Studied latest research on LLM performance</li>
+              <li>Created a ‘conversation states’ approach to dialogue management</li>
+              <li>Worked with Data Science to implement this approach</li>
+              <li>Defined traceable conversation design for escalation to advisors and for linking out to support content.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>A maturing graph architecture that combines LLM flexibility with deterministic logic. Using briefs for general dialogue, and invoking UX flows for taking actions.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I’m constantly studying the latest research on LLMs. For this work, I studied current weaknesses with LLMs and possible approaches to dialogue management.</p>
+          <p>I suggested an approach to produce coherent, useful conversations while also giving the model freedom to make decisions for itself. Using the idea of ‘conversation states’.</p>
+          <div class="shots shots--2">
+            <img src="images/p08_c1.jpg" alt="" loading="lazy">
+            <img src="images/p08_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I worked with Data Science to find ways of implementing this approach within the agentic graph. Creating a dialogue management node in the system.</p>
+          <p>I spoke about this work on a podcast with designers and engineers from Microsoft and Google.</p>
+          <div class="shots shots--2">
+            <img src="images/p09_c1.jpg" alt="" loading="lazy">
+            <img src="images/p09_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>This conversation states approach allowed me to have better control over when the model should escalate issues to human advisors.</p>
+          <p>It also allowed more control over when to link out to help centre articles. Each step could now be traced by the meaningful semantic states defined in the orchestrator node.</p>
+          <div class="shots shots--2">
+            <img src="images/p10_c1.jpg" alt="" loading="lazy">
+            <img src="images/p10_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="project" id="ovo-3">
+        <p class="project__eyebrow">OVO</p>
+        <h3 class="project__title">Voice design for accessibility and brand</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Develop a functional conversational character that is accessible, inclusive and on-brand. A voice that feels continuous with the rest of the company.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Ran character design workshop with Brand and Marketing teams, and worked with Head of Brand to create voice guidelines.</li>
+              <li>Created a quality ‘rubric’.</li>
+              <li>Wrote variants of the system command and tested using LLM-as-a-judge.</li>
+              <li>Ran automated regression testing and human reviews.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>Clear voice instructions for the model to use. And a robust process to test the model’s voice, both via automated testing, and with a diverse and representative group of human judges.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I ran a character design workshop with Brand and Marketing teams, and worked with Head of Brand to create voice guidelines.</p>
+          <p>I pulled together the conversation design principles we wanted the model to enact. Put voice and conversation design instructions together into a quality ‘rubric’ for human judges and LLM judges.</p>
+          <div class="shots shots--2">
+            <img src="images/p12_c1.jpg" alt="" loading="lazy">
+            <img src="images/p12_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I wrote variants of the system command prompts to produce this voice. Created test cases, and ran 14 iterations of prompt design using a custom LLM-as-a-judge I’d created to highlight weaknesses and improvements.</p>
+          <p>Also ran GEval automated evaluations to check for regression between variants. And ran human review cycles against the quality rubric, again highlighting weaknesses and improvements.</p>
+          <div class="shots shots--2">
+            <img src="images/p13_c1.jpg" alt="" loading="lazy">
+            <img src="images/p13_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="company" id="bbc">
+      <h2 class="company__name">BBC</h2>
+      <article class="project" id="bbc-1">
+        <p class="project__eyebrow">BBC</p>
+        <h3 class="project__title">Defining behaviours using an interaction model</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Write a system command for an AI that behaves like a tutor, helping kids study for their exams. Using techniques such as the ‘Socratic method’ and encouraging students to dive deeper into topics.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Studied how teachers teach</li>
+              <li>Ran mock lessons with GCSE teachers to find exemplary teaching patterns</li>
+              <li>Ran workshops with Bitesize producers to identify behaviours we want to create</li>
+              <li>Created an AI pattern library</li>
+              <li>Wrote structured prompts for each pattern, and compiled it into an interaction model</li>
+              <li>Collab with engineers to implement the model</li>
+              <li>Collab with designers to help with interaction patterns.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>The interaction model helped produce the first version of our AI tutor which the team then took around schools across the UK for testing.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I studied academic texts that explained the mechanics of pedagogy and I extracted principles from these papers. I also watched teachers on YouTube.</p>
+          <p>I then ran mock lessons with GCSE teachers across the UK. I recorded the transcripts and pulled out common patterns of effective teaching.</p>
+          <div class="shots shots--2">
+            <img src="images/p15_c1.jpg" alt="" loading="lazy">
+            <img src="images/p15_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I ran workshops with Bitesize producers to identify other behaviours we want from our tutor. And behaviours we want to guard against.</p>
+          <div class="shots shots--2">
+            <img src="images/p16_c1.jpg" alt="" loading="lazy">
+            <img src="images/p16_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I then wrote out these patterns, and created an AI pattern library. Showing behaviour patterns and why they are effective.</p>
+          <p>I then wrote structured prompts for each pattern, and compiled it into an ‘interaction model’.</p>
+          <div class="shots shots--2">
+            <img src="images/p17_c1.jpg" alt="" loading="lazy">
+            <img src="images/p17_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I worked with engineers to embed this interaction model into our model architecture.</p>
+          <p>I shared various early versions of this interaction model with our product designers, to give them some indicative dialogue flows to work with.</p>
+          <div class="shots shots--2">
+            <img src="images/p18_c1.jpg" alt="" loading="lazy">
+            <img src="images/p18_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="project" id="bbc-2">
+        <p class="project__eyebrow">BBC</p>
+        <h3 class="project__title">Designing and testing a voice</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Design a voice that represents the values of the BBC.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Gathered documentation about the identity of the BBC and its values.</li>
+              <li>Extracted principles for voice and content guidelines from various BBC initiatives</li>
+              <li>‘Seeded’ the model with character traits</li>
+              <li>Wrote voice and tone instructions</li>
+              <li>Set up a diverse panel of human judges.</li>
+              <li>Created a ‘constitution’ against which to test the model.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>Clear voice instructions for the model to use. And a robust process to test the model’s voice, both via automated testing, and with a diverse and representative group of human judges.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I gathered documentation about the identity of the BBC and its values.</p>
+          <p>I then extracted principles for voice and content guidelines from various BBC initiatives.</p>
+          <div class="shots shots--2">
+            <img src="images/p20_c1.jpg" alt="" loading="lazy">
+            <img src="images/p20_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I wrote instructions to ‘seed’ the model with character traits — rather than give it lots of rules to follow.</p>
+          <p>I then wrote voice and tone instructions.</p>
+          <div class="shots shots--2">
+            <img src="images/p21_c1.jpg" alt="" loading="lazy">
+            <img src="images/p21_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>To test and validate this work, I set up a diverse panel of human judges.</p>
+          <p>And I created a ‘constitution’ against which to test the model. This was simply a list of plain text rules that we could use as a ‘rubric’ for a custom LLM-as-a-judge evaluation.</p>
+          <div class="shots shots--1">
+            <img src="images/p22_c1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="testimonial">
+      <blockquote>
+        <p>&ldquo;Pete&rsquo;s ability to define requirements and processes in this emerging field was pivotal to the project's progress. His work laid a strong foundation for the AI Tutor&rsquo;s conversational and educational capabilities, setting new standards for how Generative AI can be used in a responsible and impactful way.</p>
+        <p>Pete's work ethic, collaborative spirit, and innovative thinking have left an indelible mark on the GenAI Tutor pilot, moving it forward in significant ways. He will be an incredible asset to any team looking to push boundaries and achieve impactful results in content design and beyond.</p>
+        <p>I wholeheartedly recommend Pete for any future role and am confident he will continue to make outstanding contributions wherever he goes.&rdquo;</p>
+      </blockquote>
+      <cite>&mdash; Jon Howard, Head of Generative AI at the BBC</cite>
+    </section>
+
+    <section class="company" id="vanguard">
+      <h2 class="company__name">Vanguard</h2>
+      <article class="project" id="vanguard-1">
+        <p class="project__eyebrow">Vanguard</p>
+        <h3 class="project__title">Creating a proof of concept</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>To reassure the business, I decided to create a proof of concept. Currently a work in progress.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Collate business processes</li>
+              <li>Create test sets showing golden examples with intents, flows, slots, and correct context</li>
+              <li>Collate communication principles including controlled language lexicon</li>
+              <li>Write system prompt and embed flows</li>
+              <li>Set up notebook using OpenAI assistant key</li>
+              <li>Embed flows into the system command</li>
+              <li>Share with executives.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>My goal in the next two weeks is show an end-to-end validation process we could use.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I need to collate a sub-set of business processes to try handle with this proof of concept. I haven’t done this yet.</p>
+          <p>I’ve started to create test sets for single-turn and multi-turn evaluation. Covering various happy and unhappy paths, and showing golden examples with intents, flows, slots, and correct RAG context.</p>
+          <div class="shots shots--1">
+            <img src="images/p25_c1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I’ve started to collate communication principles including a controlled language lexicon.</p>
+          <p>My next steps are to create a system prompt to generate a voice that represents the company’s communication principles.</p>
+          <p>I will then set up a python notebook in Google Colab, and create a simple assistant using an OpenAI key. And upload source content from Vanguard.co.uk</p>
+          <p>Next, I need to write the flows from the test sets into the system command. This allows the model to traverse the flows and use them when appropriate.</p>
+          <p>I can then share this working POC with the execs and explain how automated and manual evaluation would work.</p>
+          <div class="shots shots--1">
+            <img src="images/p26_c1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="project" id="vanguard-2">
+        <p class="project__eyebrow">Vanguard</p>
+        <h3 class="project__title">Observability and evaluation</h3>
+
+        <div class="summary">
+          <div class="summary__block">
+            <p class="summary__label">Task</p>
+            <p>Using a proof-of-concept (POC) assistant, show how AI assistants can be de-risked via observability and custom evaluations.</p>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Actions</p>
+            <ul>
+              <li>Connect POC to DeepEval evaluation framework.</li>
+              <li>Run automated evaluations</li>
+              <li>Create an evaluation framework</li>
+              <li>Set up manual review process</li>
+              <li>Create custom evaluations and calibrate to human scoring.</li>
+            </ul>
+          </div>
+          <div class="summary__block">
+            <p class="summary__label">Result</p>
+            <p>This is a work in progress. But the goal is, in the next two weeks, run a full suite of evaluations against a v1 of the proof of concept. Both human and automated, to reassure the business that behaviour can be observed, quantified and controlled.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+        <div class="step">
+          <p>I’ll use the DeepEval framework as a starting point. This framework allows us to measure the precision, relevance and recall of RAG retrieval. And measuring the faithfulness, relevance, scope, style, and policy violations of the generation. I can also measure coherence, flow logic and process adherence across multiple turns.</p>
+          <p>I can run my test sets into the assistant in the Google Colab notebook and then run automated tests using DeepEval.</p>
+          <div class="shots shots--1">
+            <img src="images/p28_c1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>I’ve created an evaluation framework showing all the elements we could measure with this proof of concept.</p>
+          <p>I’ve started creating a manual review process. This will need to be defined with examples, and calibrate between a group of judges to make sure everyone is aligned.</p>
+          <div class="shots shots--2">
+            <img src="images/p29_c1.jpg" alt="" loading="lazy">
+            <img src="images/p29_c2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <div class="step">
+          <p>Finally, I’d like to create some custom evaluations to show that we can create our own that are more specific to the use cases of our product. These can be focussed on specifics such as: not giving financial advice, no opinions, not sharing internal data.</p>
+          <p>I’ve started collaborating with colleagues in the US who’ve begun this process. I now have access to their Github repos and, initially, will re-use the custom evaluations they’ve created.</p>
+          <div class="shots shots--1">
+            <img src="images/p30_c1.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="closing">
+      <h2>Thanks</h2>
+      <p>Going deeper: I’ve also written a white paper on AI Conversation Design, and my content design portfolio
+        holds 11 more case studies covering a wider range of work. I recently appeared on a video podcast talking
+        about AI deployment with designers and engineers from Microsoft and Google &mdash; ask and I’ll share links.</p>
+      <p>All contact details are at <a href="https://petekowalczyk.design">petekowalczyk.design</a>.</p>
+    </footer>
+  </main>
+  <script src="sticky-nav.js" defer></script>
+</body>
+</html>

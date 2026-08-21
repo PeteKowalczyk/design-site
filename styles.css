@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff;
+  color: #111111;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 1200px;
+  width: calc(100% - 48px);
+  margin: 0 auto;
+  padding-top: 6vh;
+  padding-bottom: 8vh;
+}
+
+.intro-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-bottom: 8vh;
+}
+
+.intro {
+  max-width: 460px;
+}
+
+.avatar {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.blush {
+  position: fixed;
+  top: -160px;
+  right: -160px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle at 70% 30%, rgba(233, 30, 99, 0.35), transparent 60%),
+              radial-gradient(circle at 40% 70%, rgba(255, 152, 0, 0.35), transparent 55%),
+              radial-gradient(circle at 20% 30%, rgba(63, 81, 181, 0.3), transparent 55%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.intro p {
+  margin-bottom: 24px;
+}
+
+.intro p:last-child {
+  margin-bottom: 0;
+}
+
+.intro__lead,
+.intro__current {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.intro__portfolio {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.column a {
+  color: #111111;
+}
+
+.column a:hover {
+  color: #767676;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 32px;
+  margin-bottom: 8vh;
+}
+
+.grid:last-child {
+  margin-bottom: 0;
+}
+
+.column h2 {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.column ul {
+  list-style: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.column li {
+  margin-bottom: 6px;
+}
+
+.column li:last-child {
+  margin-bottom: 0;
+}
+
+.column--italic li {
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .intro-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 8vh;
+  }
+
+  .intro__lead,
+  .intro__current {
+    font-size: 15px;
+  }
+
+  .intro__portfolio {
+    font-size: 14px;
+  }
+}
