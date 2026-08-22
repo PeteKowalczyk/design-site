@@ -3,438 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Conversation Design case studies — Pete Kowalczyk</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Case studies — Pete Kowalczyk</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #ffffff;
+      color: #111111;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .gate { max-width: 340px; width: 100%; text-align: left; }
+    .gate p { margin-bottom: 16px; line-height: 1.5; font-size: 16px; }
+    .gate form { display: flex; gap: 8px; }
+    .gate input[type="password"] {
+      flex: 1;
+      font-family: inherit;
+      font-size: 15px;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .gate button {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 4px;
+      background: #111111;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    .gate button:hover { background: #333333; }
+    .gate__error {
+      color: #b00020;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      margin-top: 12px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="blush" aria-hidden="true"></div>
-  <nav class="sticky-nav" aria-label="Case studies (sticky)">
-    <div class="sticky-nav__inner">
-      <a href="#ovo">OVO</a>
-      <a href="#bbc">BBC</a>
-      <a href="#vanguard">Vanguard</a>
-    </div>
-  </nav>
-  <main class="page">
-    <a class="back-link" href="../index.html">&larr; Pete Kowalczyk</a>
+  <div class="gate">
+    <p>Pete&rsquo;s case studies</p>
+    <form id="gate-form" autocomplete="off">
+      <input type="password" id="gate-password" placeholder="Password" autofocus required>
+      <button type="submit">Enter</button>
+    </form>
+    <p class="gate__error" id="gate-error">Incorrect password, try again.</p>
+  </div>
+  <script>
+    const SALT = "r1rE+XQuUxOBDy5PiAHw6A==";
+    const IV = "ShwuxkLSZYCC2jTS";
+    const CIPHERTEXT = "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";
+    const ITERATIONS = 250000;
 
-    <header class="hero">
-      <p class="hero__kicker">AI Conversation Design</p>
-      <h1>Case studies</h1>
-      <p class="hero__lead">
-        Conversation design lets you define what good looks like, based on real user needs, and what should happen
-        when things go wrong. It gives you a meaningful semantic structure to test against, both automatically and
-        manually &mdash; and the traceability of actions you need to be accountable for what the system is doing.
-      </p>
-    </header>
+    const b64ToBytes = (b64) => Uint8Array.from(atob(b64), c => c.charCodeAt(0));
 
-    <nav class="jumpnav" aria-label="Case studies">
-      <div class="jumpnav__groups">
-        <div class="jumpnav__group">
-          <p class="jumpnav__company"><a href="#ovo">OVO</a></p>
-          <ol>
-            <li><a href="#ovo-1">Translating business processes into UX flows</a></li>
-            <li><a href="#ovo-2">Creating useful and fully traceable experiences</a></li>
-            <li><a href="#ovo-3">Voice design for accessibility and brand</a></li>
-          </ol>
-        </div>
-        <div class="jumpnav__group">
-          <p class="jumpnav__company"><a href="#bbc">BBC</a></p>
-          <ol>
-            <li><a href="#bbc-1">Defining behaviours using an interaction model</a></li>
-            <li><a href="#bbc-2">Designing and testing a voice</a></li>
-          </ol>
-        </div>
-        <div class="jumpnav__group">
-          <p class="jumpnav__company"><a href="#vanguard">Vanguard</a></p>
-          <ol>
-            <li><a href="#vanguard-1">Creating a proof of concept</a></li>
-            <li><a href="#vanguard-2">Observability and evaluation</a></li>
-          </ol>
-        </div>
-      </div>
-    </nav>
+    async function tryDecrypt(password) {
+      const enc = new TextEncoder();
+      const baseKey = await crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey"]);
+      const key = await crypto.subtle.deriveKey(
+        { name: "PBKDF2", salt: b64ToBytes(SALT), iterations: ITERATIONS, hash: "SHA-256" },
+        baseKey,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["decrypt"]
+      );
+      const plainBuf = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: b64ToBytes(IV) },
+        key,
+        b64ToBytes(CIPHERTEXT)
+      );
+      return new TextDecoder().decode(plainBuf);
+    }
 
-    <section class="company" id="ovo">
-      <h2 class="company__name">OVO</h2>
-      <article class="project" id="ovo-1">
-        <p class="project__eyebrow">OVO</p>
-        <h3 class="project__title">Translating business processes into UX flows</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Define what good behaviour looks like for a range of scenarios, happy and unhappy paths. Specify what we do and don’t want to happen.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Ran a workshop to define behaviours and create interaction policies</li>
-              <li>Mined conversation logs and training materials</li>
-              <li>Created an intent matrix mapped to correct process flow. Prioritised top contact topics</li>
-              <li>Created retrievable flows.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>A conversational architecture based on real needs and compliant business processes.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I ran a workshop to define behaviours and create our ‘interaction policies’, what we do and don’t want to happen.</p>
-          <p>I mined conversation logs, training materials and regulatory documents to find exemplary patterns.</p>
-          <div class="shots shots--2">
-            <img src="images/p05_c1.jpg" alt="" loading="lazy">
-            <img src="images/p05_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>Together with Ops, I created an intent matrix, mapping user needs to the correct process flows. We then prioritised top contact topics.</p>
-          <p>I created retrievable UX flows for our model to use when it detected any given intent. Flows include intents, example utterances, the required slots, escalation logic, tone markers, repair paths, and example dialogue.</p>
-          <div class="shots shots--2">
-            <img src="images/p06_c1.jpg" alt="" loading="lazy">
-            <img src="images/p06_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-
-      <article class="project" id="ovo-2">
-        <p class="project__eyebrow">OVO</p>
-        <h3 class="project__title">Creating useful and fully traceable experiences</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Create truly conversational experiences that support user needs. Working with, rather than against, the capabilities of LLMs.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Studied latest research on LLM performance</li>
-              <li>Created a ‘conversation states’ approach to dialogue management</li>
-              <li>Worked with Data Science to implement this approach</li>
-              <li>Defined traceable conversation design for escalation to advisors and for linking out to support content.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>A maturing graph architecture that combines LLM flexibility with deterministic logic. Using briefs for general dialogue, and invoking UX flows for taking actions.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I’m constantly studying the latest research on LLMs. For this work, I studied current weaknesses with LLMs and possible approaches to dialogue management.</p>
-          <p>I suggested an approach to produce coherent, useful conversations while also giving the model freedom to make decisions for itself. Using the idea of ‘conversation states’.</p>
-          <div class="shots shots--2">
-            <img src="images/p08_c1.jpg" alt="" loading="lazy">
-            <img src="images/p08_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I worked with Data Science to find ways of implementing this approach within the agentic graph. Creating a dialogue management node in the system.</p>
-          <p>I spoke about this work on a podcast with designers and engineers from Microsoft and Google.</p>
-          <div class="shots shots--2">
-            <img src="images/p09_c1.jpg" alt="" loading="lazy">
-            <img src="images/p09_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>This conversation states approach allowed me to have better control over when the model should escalate issues to human advisors.</p>
-          <p>It also allowed more control over when to link out to help centre articles. Each step could now be traced by the meaningful semantic states defined in the orchestrator node.</p>
-          <div class="shots shots--2">
-            <img src="images/p10_c1.jpg" alt="" loading="lazy">
-            <img src="images/p10_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-
-      <article class="project" id="ovo-3">
-        <p class="project__eyebrow">OVO</p>
-        <h3 class="project__title">Voice design for accessibility and brand</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Develop a functional conversational character that is accessible, inclusive and on-brand. A voice that feels continuous with the rest of the company.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Ran character design workshop with Brand and Marketing teams, and worked with Head of Brand to create voice guidelines.</li>
-              <li>Created a quality ‘rubric’.</li>
-              <li>Wrote variants of the system command and tested using LLM-as-a-judge.</li>
-              <li>Ran automated regression testing and human reviews.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>Clear voice instructions for the model to use. And a robust process to test the model’s voice, both via automated testing, and with a diverse and representative group of human judges.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I ran a character design workshop with Brand and Marketing teams, and worked with Head of Brand to create voice guidelines.</p>
-          <p>I pulled together the conversation design principles we wanted the model to enact. Put voice and conversation design instructions together into a quality ‘rubric’ for human judges and LLM judges.</p>
-          <div class="shots shots--2">
-            <img src="images/p12_c1.jpg" alt="" loading="lazy">
-            <img src="images/p12_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I wrote variants of the system command prompts to produce this voice. Created test cases, and ran 14 iterations of prompt design using a custom LLM-as-a-judge I’d created to highlight weaknesses and improvements.</p>
-          <p>Also ran GEval automated evaluations to check for regression between variants. And ran human review cycles against the quality rubric, again highlighting weaknesses and improvements.</p>
-          <div class="shots shots--2">
-            <img src="images/p13_c1.jpg" alt="" loading="lazy">
-            <img src="images/p13_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="company" id="bbc">
-      <h2 class="company__name">BBC</h2>
-      <article class="project" id="bbc-1">
-        <p class="project__eyebrow">BBC</p>
-        <h3 class="project__title">Defining behaviours using an interaction model</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Write a system command for an AI that behaves like a tutor, helping kids study for their exams. Using techniques such as the ‘Socratic method’ and encouraging students to dive deeper into topics.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Studied how teachers teach</li>
-              <li>Ran mock lessons with GCSE teachers to find exemplary teaching patterns</li>
-              <li>Ran workshops with Bitesize producers to identify behaviours we want to create</li>
-              <li>Created an AI pattern library</li>
-              <li>Wrote structured prompts for each pattern, and compiled it into an interaction model</li>
-              <li>Collab with engineers to implement the model</li>
-              <li>Collab with designers to help with interaction patterns.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>The interaction model helped produce the first version of our AI tutor which the team then took around schools across the UK for testing.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I studied academic texts that explained the mechanics of pedagogy and I extracted principles from these papers. I also watched teachers on YouTube.</p>
-          <p>I then ran mock lessons with GCSE teachers across the UK. I recorded the transcripts and pulled out common patterns of effective teaching.</p>
-          <div class="shots shots--2">
-            <img src="images/p15_c1.jpg" alt="" loading="lazy">
-            <img src="images/p15_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I ran workshops with Bitesize producers to identify other behaviours we want from our tutor. And behaviours we want to guard against.</p>
-          <div class="shots shots--2">
-            <img src="images/p16_c1.jpg" alt="" loading="lazy">
-            <img src="images/p16_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I then wrote out these patterns, and created an AI pattern library. Showing behaviour patterns and why they are effective.</p>
-          <p>I then wrote structured prompts for each pattern, and compiled it into an ‘interaction model’.</p>
-          <div class="shots shots--2">
-            <img src="images/p17_c1.jpg" alt="" loading="lazy">
-            <img src="images/p17_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I worked with engineers to embed this interaction model into our model architecture.</p>
-          <p>I shared various early versions of this interaction model with our product designers, to give them some indicative dialogue flows to work with.</p>
-          <div class="shots shots--2">
-            <img src="images/p18_c1.jpg" alt="" loading="lazy">
-            <img src="images/p18_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-
-      <article class="project" id="bbc-2">
-        <p class="project__eyebrow">BBC</p>
-        <h3 class="project__title">Designing and testing a voice</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Design a voice that represents the values of the BBC.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Gathered documentation about the identity of the BBC and its values.</li>
-              <li>Extracted principles for voice and content guidelines from various BBC initiatives</li>
-              <li>‘Seeded’ the model with character traits</li>
-              <li>Wrote voice and tone instructions</li>
-              <li>Set up a diverse panel of human judges.</li>
-              <li>Created a ‘constitution’ against which to test the model.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>Clear voice instructions for the model to use. And a robust process to test the model’s voice, both via automated testing, and with a diverse and representative group of human judges.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I gathered documentation about the identity of the BBC and its values.</p>
-          <p>I then extracted principles for voice and content guidelines from various BBC initiatives.</p>
-          <div class="shots shots--2">
-            <img src="images/p20_c1.jpg" alt="" loading="lazy">
-            <img src="images/p20_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I wrote instructions to ‘seed’ the model with character traits — rather than give it lots of rules to follow.</p>
-          <p>I then wrote voice and tone instructions.</p>
-          <div class="shots shots--2">
-            <img src="images/p21_c1.jpg" alt="" loading="lazy">
-            <img src="images/p21_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>To test and validate this work, I set up a diverse panel of human judges.</p>
-          <p>And I created a ‘constitution’ against which to test the model. This was simply a list of plain text rules that we could use as a ‘rubric’ for a custom LLM-as-a-judge evaluation.</p>
-          <div class="shots shots--1">
-            <img src="images/p22_c1.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-    </section>
-
-    <section class="testimonial">
-      <blockquote>
-        <p>&ldquo;Pete&rsquo;s ability to define requirements and processes in this emerging field was pivotal to the project's progress. His work laid a strong foundation for the AI Tutor&rsquo;s conversational and educational capabilities, setting new standards for how Generative AI can be used in a responsible and impactful way.</p>
-        <p>Pete's work ethic, collaborative spirit, and innovative thinking have left an indelible mark on the GenAI Tutor pilot, moving it forward in significant ways. He will be an incredible asset to any team looking to push boundaries and achieve impactful results in content design and beyond.</p>
-        <p>I wholeheartedly recommend Pete for any future role and am confident he will continue to make outstanding contributions wherever he goes.&rdquo;</p>
-      </blockquote>
-      <cite>&mdash; Jon Howard, Head of Generative AI at the BBC</cite>
-    </section>
-
-    <section class="company" id="vanguard">
-      <h2 class="company__name">Vanguard</h2>
-      <article class="project" id="vanguard-1">
-        <p class="project__eyebrow">Vanguard</p>
-        <h3 class="project__title">Creating a proof of concept</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>To reassure the business, I decided to create a proof of concept. Currently a work in progress.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Collate business processes</li>
-              <li>Create test sets showing golden examples with intents, flows, slots, and correct context</li>
-              <li>Collate communication principles including controlled language lexicon</li>
-              <li>Write system prompt and embed flows</li>
-              <li>Set up notebook using OpenAI assistant key</li>
-              <li>Embed flows into the system command</li>
-              <li>Share with executives.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>My goal in the next two weeks is show an end-to-end validation process we could use.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I need to collate a sub-set of business processes to try handle with this proof of concept. I haven’t done this yet.</p>
-          <p>I’ve started to create test sets for single-turn and multi-turn evaluation. Covering various happy and unhappy paths, and showing golden examples with intents, flows, slots, and correct RAG context.</p>
-          <div class="shots shots--1">
-            <img src="images/p25_c1.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I’ve started to collate communication principles including a controlled language lexicon.</p>
-          <p>My next steps are to create a system prompt to generate a voice that represents the company’s communication principles.</p>
-          <p>I will then set up a python notebook in Google Colab, and create a simple assistant using an OpenAI key. And upload source content from Vanguard.co.uk</p>
-          <p>Next, I need to write the flows from the test sets into the system command. This allows the model to traverse the flows and use them when appropriate.</p>
-          <p>I can then share this working POC with the execs and explain how automated and manual evaluation would work.</p>
-          <div class="shots shots--1">
-            <img src="images/p26_c1.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-
-      <article class="project" id="vanguard-2">
-        <p class="project__eyebrow">Vanguard</p>
-        <h3 class="project__title">Observability and evaluation</h3>
-
-        <div class="summary">
-          <div class="summary__block">
-            <p class="summary__label">Task</p>
-            <p>Using a proof-of-concept (POC) assistant, show how AI assistants can be de-risked via observability and custom evaluations.</p>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Actions</p>
-            <ul>
-              <li>Connect POC to DeepEval evaluation framework.</li>
-              <li>Run automated evaluations</li>
-              <li>Create an evaluation framework</li>
-              <li>Set up manual review process</li>
-              <li>Create custom evaluations and calibrate to human scoring.</li>
-            </ul>
-          </div>
-          <div class="summary__block">
-            <p class="summary__label">Result</p>
-            <p>This is a work in progress. But the goal is, in the next two weeks, run a full suite of evaluations against a v1 of the proof of concept. Both human and automated, to reassure the business that behaviour can be observed, quantified and controlled.</p>
-          </div>
-        </div>
-
-        <div class="steps">
-        <div class="step">
-          <p>I’ll use the DeepEval framework as a starting point. This framework allows us to measure the precision, relevance and recall of RAG retrieval. And measuring the faithfulness, relevance, scope, style, and policy violations of the generation. I can also measure coherence, flow logic and process adherence across multiple turns.</p>
-          <p>I can run my test sets into the assistant in the Google Colab notebook and then run automated tests using DeepEval.</p>
-          <div class="shots shots--1">
-            <img src="images/p28_c1.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>I’ve created an evaluation framework showing all the elements we could measure with this proof of concept.</p>
-          <p>I’ve started creating a manual review process. This will need to be defined with examples, and calibrate between a group of judges to make sure everyone is aligned.</p>
-          <div class="shots shots--2">
-            <img src="images/p29_c1.jpg" alt="" loading="lazy">
-            <img src="images/p29_c2.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="step">
-          <p>Finally, I’d like to create some custom evaluations to show that we can create our own that are more specific to the use cases of our product. These can be focussed on specifics such as: not giving financial advice, no opinions, not sharing internal data.</p>
-          <p>I’ve started collaborating with colleagues in the US who’ve begun this process. I now have access to their Github repos and, initially, will re-use the custom evaluations they’ve created.</p>
-          <div class="shots shots--1">
-            <img src="images/p30_c1.jpg" alt="" loading="lazy">
-          </div>
-        </div>
-        </div>
-      </article>
-    </section>
-
-    <footer class="closing">
-      <h2>Thanks</h2>
-      <p>Going deeper: I’ve also written a white paper on AI Conversation Design, and my content design portfolio
-        holds 11 more case studies covering a wider range of work. I recently appeared on a video podcast talking
-        about AI deployment with designers and engineers from Microsoft and Google &mdash; ask and I’ll share links.</p>
-      <p>All contact details are at <a href="https://petekowalczyk.design">petekowalczyk.design</a>.</p>
-    </footer>
-  </main>
-  <script src="sticky-nav.js" defer></script>
+    document.getElementById("gate-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.getElementById("gate-password").value;
+      const errorEl = document.getElementById("gate-error");
+      try {
+        const html = await tryDecrypt(password);
+        document.open();
+        document.write(html);
+        document.close();
+      } catch {
+        errorEl.style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>
